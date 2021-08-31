@@ -1,0 +1,295 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.button{
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.bigButton{
+    width: 96%;
+    margin: auto;
+}
+
+.room{
+    margin: 10px;
+    color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.header{
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.label{
+    display: inline;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.small{
+    font-size: 16px;
+}
+
+.right{
+    display: inline;
+    float: right;
+}
+
+.list{
+    margin-left: 140px;
+}
+
+.postIt{
+    background-color: rgba(200, 80, 0, 0.2);
+    padding: 10px;
+    border-radius: 16px;
+}
+
+.title{
+    text-transform: uppercase;
+    color: white;
+    border-bottom: 1px solid white;
+    font-weight: bolder;
+    font-size: 36px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.title span{
+    float: right;
+    cursor: pointer;
+}
+
+.input_label{
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.input_field{
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+
+.input_label div{
+    padding: 6px;
+    color: white;
+}
+
+.input_field div{
+    padding: 5px;
+}
+
+#form_button, #edit_form_button{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#new_room, #edit_room, #new_potion, #edit_potion{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid black;
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:400px;
+    height:400px;
+    margin-left:-200px;
+    margin-top:-200px;
+}
+
+#new_room{
+    height:250px;
+    margin-top:-125px;
+}
+
+#edit_room{
+    height:250px;
+    margin-top:-125px;
+}
+
+#new_potion{
+    height:400px;
+    margin-top:-200px;
+}
+
+#edit_potion{
+    height:220px;
+    margin-top:-110px;
+}
+
+#new_room_form, #edit_room_form, #new_potion_form, #edit_potion_form{
+    margin-bottom: 0px;
+}
+
+.close-container {
+    position: relative;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.leftright {
+    height: 4px;
+    width: 20px;
+    position: absolute;
+    margin-top: 0px;
+    margin-right: 4px;
+    background-color: #fff;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    transition: all 0.3s ease-in;
+}
+.rightleft {
+    height: 4px;
+    width: 20px;
+    position: absolute;
+    margin-top: 0px;
+    margin-right: 4px;
+    background-color: #fff;
+    border-radius: 2px;
+    transform: rotate(-45deg);
+    transition: all 0.3s ease-in;
+}
+.close {
+    margin: 60px 0 0 5px;
+    position: absolute;
+}
+.close-container:hover .leftright {
+    transform: rotate(-45deg);
+    background-color: #f25c66;
+}
+.close-container:hover .rightleft {
+    transform: rotate(45deg);
+    background-color: #f25c66;
+}
+
+.data{
+    display: none;
+}
+
+.glow-on-hover {
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+}
+
+.inline{
+    display: inline;
+}
+
+.trash{
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    color: #f25c66;
+}
+
+.edit{
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.big_number{
+    font-size: 32px;
+}
+
+.show_room_button, .show_potion_button{
+    text-decoration: none;
+    color: white;
+}
+
+[type="checkbox"]{
+    vertical-align:middle;
+}
+
+.ingredients{
+    text-transform: lowercase;
+    text-align: center;
+}
+
+.ingredients option, .ingredients select{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    min-width: 360px;
+    width: 360px;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}

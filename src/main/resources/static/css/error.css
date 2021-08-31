@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#container{
+    position: relative;
+}
+
+.label{
+    font-size: 64px;
+    text-transform: uppercase;
+    color: white;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+    width: 600px;
+    border: 1px solid black;
+    background-color: rgba(0, 0, 0, .6);
+    text-align: center;
+    padding: 10px;
+    font-weight: bolder;
+}
+
+.statusCode{
+    font-size: 100px;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}

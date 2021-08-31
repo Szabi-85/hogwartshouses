@@ -1,0 +1,74 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rooms</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/menu.css}" rel="stylesheet" />
+    <link th:href="@{/css/basic.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="application/javascript" src="/js/sendRoom.js"></script>
+</head>
+<body>
+<img src="/img/background.webp" id="bg" alt="">
+<div id="navbar">
+    <div class="logo"><a href="/"><img src="/img/icon.png"></a></div>
+    <div class="menu"><a href="/rooms">rooms</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="#">students</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/potions">potions</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/about">about</a></div>
+</div>
+<div class="room" th:each="room: ${rooms}">
+    <div class="header">
+        <a class="show_room_button" th:href="'http://localhost:8080/rooms/' + ${room.id}"><div class="label" th:text="'Room ' + ${room.roomNumber}"></div></a>
+        <div class="right">
+            <div class="inline" th:utext="'<span class=\'big_number\'>' + ${room.numberOfBeds} + '</span> / ' + ${room.capacity}">4/10</div>
+            <div class="inline edit" title="Edit room" th:onclick="'editRoom(' + ${room.id} + ', ' + ${room.roomNumber} + ', ' + ${room.capacity} + ');'"><i class="fa fa-edit fa-lg"></i></div>
+            <div class="inline trash" title="Delete room" th:onclick="'deleteRoom(' + ${room.id} + ');'"><i class="fa fa-trash fa-lg"></i></div>
+        </div>
+    </div>
+    <div>
+        <span class="label small">Residents:</span>
+        <span th:each="student: ${room.getStudents}">
+            <span class="postIt" th:text="${student.name}"></span>
+        </span>
+    </div>
+</div>
+<div id="show_new_room_window" class="button bigButton glow-on-hover" onclick="showNewRoomWindow()">Add new room</div>
+<div id="new_room">
+    <div class="title">New room<span id="close_new_room_window">
+        <div class="close-container" onclick="hideNewRoomWindow()">
+            <div class="leftright"></div>
+            <div class="rightleft"></div>
+        </div>
+    </span></div>
+    <form id="new_room_form" enctype="application/json">
+        <div class="input_label">
+            <div><label for="room_number">Room number:</label></div>
+            <div><label for="capacity">Capacity:</label></div>
+        </div>
+        <div class="input_field">
+            <div><input id="room_number" name="room_number" /></div>
+            <div><input id="capacity" name="capacity" /></div>
+        </div>
+
+        <div id="form_button" class="button glow-on-hover" onclick="sendData()">create</div>
+    </form>
+</div>
+<div id="edit_room">
+    <div class="title">Edit room<span id="close_edit_room_window">
+        <div class="close-container" onclick="hideEditRoomWindow()">
+            <div class="leftright"></div>
+            <div class="rightleft"></div>
+        </div>
+    </span></div>
+    <form id="edit_room_form" enctype="application/json">
+        <div class="input_label">
+            <div><label for="edit_room_number">Room number:</label></div>
+            <div><label for="edit_capacity">Capacity:</label></div>
+        </div>
+        <div class="input_field">
+            <div><input id="edit_room_number" name="room_number" /></div>
+            <div><input id="edit_capacity" name="capacity" /></div>
+        </div>
+
+        <div id="edit_form_button" class="button glow-on-hover">update</div>
+    </form>
+</div>
+</body>
+</html>

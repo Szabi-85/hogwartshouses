@@ -1,0 +1,102 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recipes</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/menu.css}" rel="stylesheet" />
+    <link th:href="@{/css/basic.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="application/javascript" src="/js/sendPotion.js"></script>
+</head>
+<body>
+<img src="/img/background.webp" id="bg" alt="">
+<div id="navbar">
+    <div class="logo"><a href="/"><img src="/img/icon.png"></a></div>
+    <div class="menu"><a href="/rooms">rooms</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="#">students</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/potions">potions</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/about">about</a></div>
+</div>
+<div class="room" th:each="recipeEntity: ${recipes}">
+    <div class="header">
+        <div class="label" th:text="${recipeEntity.name}"></div>
+        <div class="right">
+            <div class="inline edit" title="Edit recipeEntity" th:onclick="'editPotion(' + ${recipeEntity.id} + ');'"><i class="fa fa-edit fa-lg"></i></div>
+            <div class="inline trash" title="Delete recipeEntity" th:onclick="'deletePotion(' + ${recipeEntity.id} + ');'"><i class="fa fa-trash fa-lg"></i></div>
+            <div th:id="'data' + ${recipeEntity.id}" class="data" th:text="${recipeEntity.name}"></div>
+        </div>
+    </div>
+    <div>
+        <span class="label small">Ingredients: </span>
+        <span th:each="ingredient: ${recipeEntity.getIngredients()}">
+            <span class="postIt" th:text="${ingredient.name()}"></span>
+        </span>
+    </div>
+</div>
+<div id="show_new_potion_window" class="button bigButton glow-on-hover" onclick="showNewPotionWindow()">Add new recipeEntity</div>
+<div id="new_potion">
+    <div class="title">New potion<span id="close_new_potion_window">
+        <div class="close-container" onclick="hideNewPotionWindow()">
+            <div class="leftright"></div>
+            <div class="rightleft"></div>
+        </div>
+    </span></div>
+    <form id="new_potion_form" enctype="application/json">
+        <div class="input_label">
+            <div><label for="brewer_student">Student name:</label></div>
+            <div><label>Ingredients:</label></div>
+        </div>
+        <div class="input_field">
+            <div>
+                <select id="brewer_student">
+                    <option name="brewer_student" th:each="student: ${students}" th:value="${student.id}" th:text="${student.name}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="ingredients">
+            <div>
+                <select id="ingredient1">
+                    <option th:each="ingredient: ${ingredients}" th:value="${ingredient}" th:text="${ingredient}"></option>
+                </select>
+            </div>
+            <div>
+                <select id="ingredient2">
+                    <option th:each="ingredient: ${ingredients}" th:value="${ingredient}" th:text="${ingredient}"></option>
+                </select>
+            </div>
+            <div>
+                <select id="ingredient3">
+                    <option th:each="ingredient: ${ingredients}" th:value="${ingredient}" th:text="${ingredient}"></option>
+                </select>
+            </div>
+            <div>
+                <select id="ingredient4">
+                    <option th:each="ingredient: ${ingredients}" th:value="${ingredient}" th:text="${ingredient}"></option>
+                </select>
+            </div>
+            <div>
+                <select id="ingredient5">
+                    <option th:each="ingredient: ${ingredients}" th:value="${ingredient}" th:text="${ingredient}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div id="form_button" class="button glow-on-hover" onclick="sendData()">brew</div>
+    </form>
+</div>
+<div id="edit_potion">
+    <div class="title">Edit potion<span id="close_edit_potion_window">
+        <div class="close-container" onclick="hideEditPotionWindow()">
+            <div class="leftright"></div>
+            <div class="rightleft"></div>
+        </div>
+    </span></div>
+    <form id="edit_potion_form" enctype="application/json">
+        <div class="input_label">
+            <div><label for="edit_potion_name">Potion name:</label></div>
+        </div>
+        <div class="input_field">
+            <div><input id="edit_potion_name" name="potion_name" /></div>
+        </div>
+
+        <div id="edit_form_button" class="button glow-on-hover">update</div>
+    </form>
+</div>
+</body>
+</html>

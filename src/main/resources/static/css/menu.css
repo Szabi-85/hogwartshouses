@@ -1,0 +1,38 @@
+#navbar{
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, .6);
+    width: 100%;
+    height: 60px;
+}
+
+.logo{
+    margin-top: 10px;
+    display: inline;
+}
+
+.logo a{
+    text-decoration: none;
+}
+
+.logo img{
+    vertical-align: middle;
+    margin: 5px;
+    height: 50px;
+}
+
+.menu{
+    display: inline;
+    line-height: 50px;
+    height: 50px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+    line-height: 50px;
+    height: 50px;
+}
